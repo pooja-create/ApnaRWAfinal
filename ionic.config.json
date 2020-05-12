@@ -1,0 +1,8 @@
+{
+  "name": "apnarwareal",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

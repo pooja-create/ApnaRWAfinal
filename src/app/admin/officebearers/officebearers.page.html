@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+   <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-panel"></ion-back-button>
+  </ion-buttons>
+    <ion-title>officebearers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
+        <ion-item *ngFor="let t of test | async">
+          <ion-label>Welcome</ion-label>
+          <ion-input type="text" value="{{ t.societyno }}" ngModel="{{ t.societyno }}" name="societyno" [readonly]="isReadonly"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Office Bearer Name</ion-label>
+          <ion-input type="text" [(ngModel)]="office.officebname" name="officebname"  #officebname="ngModel" required></ion-input>
+        <div class="alert alert-danger" *ngIf="officebname.touched && officebname.invalid">
+          name is required
+        </div>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Designation</ion-label>
+          <ion-input type="text" [(ngModel)]="office.des" name="des"  #des="ngModel" required></ion-input>
+        <div class="alert alert-danger" *ngIf="des.touched && des.invalid">
+          designation is required
+        </div>
+        </ion-item>
+        <ion-button type="submit" expand="full" margin-top>Submit</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

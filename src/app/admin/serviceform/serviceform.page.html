@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-panel"></ion-back-button>
+    </ion-buttons>
+    <ion-title>serviceform</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
+        <ion-item *ngFor="let t of test | async">
+          <ion-label>service</ion-label>
+          <ion-input type="text" value="{{ t.societyno }}" ngModel="{{ t.societyno }}"  name="societyno" [readonly]="isReadonly"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <select type="text" [(ngModel)]="service.category" name="category">
+            <option  value="Plumber">Plumber</option>
+            <option  value="Electrician">Electrician</option>
+            <option  value="Salon">Salon</option>
+            <option  value="Tutor">Tutor</option>
+            <option  value="Maid">Maid</option>
+            <option  value="Grocery">Grocery</option>
+            <option  value="Health Club">Health Club</option>
+            <option  value="House Shift">House Shift</option>
+            <option  value="Rent/sale of flats">Rent/sale of flats</option>
+            <option  value="Broadband">Broadband</option>
+            <option  value="Traffic">Traffic</option>
+            <option  value="Bill Pay">Bill Pay</option>
+            <option  value="CCTV">CCTV</option>
+            <option  value="Bill Pay">Bill Pay</option>
+            <option  value="Legal">Legal</option>
+            <option  value="food">food</option>
+            <option  value="Jobs">Jobs</option>
+          </select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" [(ngModel)]="service.name" name="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Aadhar No.</ion-label>
+          <ion-input type="number" [(ngModel)]="service.aadharno" name="aadharno"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile No.</ion-label>
+          <ion-input type="number" [(ngModel)]="service.mobileno" name="mobileno"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Image Url</ion-label>
+          <ion-input type="text" [(ngModel)]="service.image" name="image"></ion-input>
+        </ion-item>
+        <ion-button type="submit" expand="full" margin-top>Submit</ion-button>
+        </form>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button color="light" slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-button>
+    <ion-title>
+      Services
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+  <ion-card-content *ngIf="p$ | async; let all">
+   <div *ngFor="let cc of all.usersignupdetails">
+    <div *ngIf="p$ | async; let all">
+    <div *ngFor="let c of all.serviceform">
+      <div *ngIf="cc.societyno==c.societyno">
+       <ion-item>
+       <ion-thumbnail>
+       <img src="{{ c.image }}">
+       </ion-thumbnail>&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <b class="category">{{ c.category }}</b>
+       </ion-item>
+       <ion-list>
+       <ion-item>
+        <b>Name</b>&nbsp;&nbsp;<small><b>{{ c.name }}</b></small>
+        </ion-item>
+        <ion-item>
+        <b>Mobileno</b>&nbsp;&nbsp;<small><b>{{ c.mobileno }}</b></small>
+         </ion-item>
+        </ion-list>
+        <p class="p"></p>
+      </div> 
+    </div>
+  </div> 
+  </div>
+</ion-card-content>
+</ion-card>
+</ion-content>

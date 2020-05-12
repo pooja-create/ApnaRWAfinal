@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-panel"></ion-back-button>
+    </ion-buttons>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form class="form-control" #form="ngForm" (ngSubmit)="onsubmit(form); form.reset()"  [class.loading]="loading">
+        <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="fname" ngModel name="fname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input type="lname" ngModel name="lname"></ion-input>
+        </ion-item>
+        <ion-item>
+         <ion-label position="floating">Email</ion-label>
+         <ion-input type="email" ngModel name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+           <ion-label position="floating">Password</ion-label>
+           <ion-input type="password" ngModel name="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile No</ion-label>
+          <ion-input type="number" ngModel name="mobileno"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Society No</ion-label>
+          <select type="text" ngModel name="societyno">
+            <option *ngFor="let c of societynumber$ | async" value="{{ c.societyno }}">{{ c.societyno }}</option>
+          </select>
+        </ion-item>
+        
+        <ion-button type="submit" expand="full" margin-top [disabled]="form.invalid">SignUp</ion-button>
+        </form>
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>

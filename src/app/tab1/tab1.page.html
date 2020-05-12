@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button color="light" slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-button>
+    <ion-title *ngIf="afAuth.user | async as user">
+      {{ user.displayName }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+  <ion-card-content *ngIf="p$ | async; let all">
+   <div *ngFor="let cc of all.usersignupdetails">
+    <div *ngIf="p$ | async; let all">
+    <div *ngFor="let c of all.activityform">
+      <div *ngIf="cc.societyno==c.societyno" [routerLink]="['/activitydetail',cc.uid]">
+        <ion-item><small>{{ c.atitle }}</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+        <small>{{ c.adate | date:'MMM,dd,yyyy hh:mm a '}}</small></ion-item>
+        <br>
+        <ion-item><img src="{{ c.aimage }}" class="img"></ion-item><br>
+      </div> 
+    </div>
+  </div> 
+  </div>
+</ion-card-content>
+</ion-card>
+</ion-content>

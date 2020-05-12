@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+   <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-panel"></ion-back-button>
+   </ion-buttons>
+    <ion-title>showofficebearers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <ion-card>
+    <br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b class="b">Office bearers List</b>
+    <ion-card-content *ngIf="p$ | async; let all">
+     <div *ngFor="let cc of all.usersignupdetails">
+      <div *ngIf="p$ | async; let all">
+      <div *ngFor="let c of all.officebearerslist">
+        <div *ngIf="cc.societyno==c.societyno">
+        
+         <ion-item>
+         <b>Name</b> &nbsp;&nbsp;{{ c.officebname }}
+         </ion-item>
+         <ion-item>
+         <b>Designation</b> &nbsp;&nbsp;{{ c.des }}
+         </ion-item>
+        </div>
+        <p class="p"></p>
+      </div>
+    </div> 
+    </div>
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>
