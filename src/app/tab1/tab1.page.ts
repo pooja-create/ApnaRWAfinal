@@ -31,7 +31,16 @@ export class Tab1Page implements OnInit{
         }
       this.p$ = combineLatest (
           this.afs.collection<Inter1>('usersignupdetails', ref => ref.where('uid', '==' , this.uidd)).valueChanges(),
-          this.afs.collection<Activity>('activityform').valueChanges()
+          this.afs.collection<Activity>('activityform').snapshotChanges()
+          .pipe(
+           map(changes =>
+               changes.map(c => {
+                   const data = c.payload.doc.data() as Activity;
+                   const id = c.payload.doc.id;
+                   return { id, ...data };
+               })
+           )
+        )
         ).pipe(
           map(([usersignupdetails, activityform]) => {
               return {usersignupdetails, activityform};

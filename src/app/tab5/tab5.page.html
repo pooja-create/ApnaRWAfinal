@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-panel"></ion-back-button>
+    </ion-buttons>
+    <ion-title>tab5</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content *ngIf="p$ | async; let all">
+     <div *ngFor="let cc of all.usersignupdetails">
+      <div *ngIf="p$ | async; let all">
+      <div *ngFor="let c of all.chatform">
+        <div *ngIf="cc.societyno==c.societyno">
+          <ion-list *ngIf="c.uid!==uidd">
+            <ion-item>
+               <ion-avatar>
+               <img src="{{ c.img }}">
+               </ion-avatar>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <b>{{ c.fname }}&nbsp;&nbsp;&nbsp;{{ c.lname }}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <p routerLink="/chatdetail/{{ c.uid }}"><ion-icon name="chatbubbles"></ion-icon></p>
+            </ion-item>
+          </ion-list>
+        </div> 
+      </div>
+    </div> 
+    </div>
+  </ion-card-content>
+  </ion-card>
+</ion-content>

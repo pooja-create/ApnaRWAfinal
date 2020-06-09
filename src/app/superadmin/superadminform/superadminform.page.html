@@ -13,14 +13,14 @@
       <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
         <ion-item>
           <ion-label position="floating">Society No.</ion-label>
-          <ion-input type="text" [(ngModel)]="adminform.societyno" name="societyno" #societyno="ngModel" required></ion-input>
+          <ion-input type="text" ngModel name="societyno" #societyno="ngModel" required></ion-input>
         <div class="alert alert-danger" *ngIf="societyno.touched && societyno.invalid">
           number is required
         </div>
         </ion-item>
         <ion-item>
           <ion-label position="floating">RWA Name</ion-label>
-          <ion-input type="text" [(ngModel)]="adminform.rname" name="rname" #rname="ngModel" required></ion-input>
+          <ion-input type="text" ngModel name="rname" #rname="ngModel" required></ion-input>
         <div class="alert alert-danger" *ngIf="rname.touched && rname.invalid">
           name is required
         </div>
@@ -32,42 +32,42 @@
             </ion-list-header>
             <ion-item>
               <ion-label position="floating">Street</ion-label>
-              <ion-input type="text" [(ngModel)]="adminform.street" name="street" #street="ngModel" required></ion-input>
+              <ion-input type="text" ngModel name="street" #street="ngModel" required></ion-input>
               <div class="alert alert-danger" *ngIf="street.touched && street.invalid">
                 street is required
               </div>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Landmark</ion-label>
-              <ion-input type="text" [(ngModel)]="adminform.landmark" name="landmark" #landmark="ngModel" required></ion-input>
+              <ion-input type="text" ngModel name="landmark" #landmark="ngModel" required></ion-input>
               <div class="alert alert-danger" *ngIf="landmark.touched && landmark.invalid">
                 landmark is required
               </div>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Locality/Colony No.</ion-label>
-              <ion-input type="text" [(ngModel)]="adminform.local" name="local" #local="ngModel" required></ion-input>
+              <ion-input type="text" ngModel name="local" #local="ngModel" required></ion-input>
               <div class="alert alert-danger" *ngIf="local.touched && local.invalid">
                 locality is required
               </div>
             </ion-item>
             <ion-item>
               <ion-label position="floating">city</ion-label>
-              <ion-input type="text" [(ngModel)]="adminform.city" name="city"  #city="ngModel" required></ion-input>
+              <ion-input type="text" ngModel name="city"  #city="ngModel" required></ion-input>
               <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
                 city is required
               </div>
             </ion-item>
             <ion-item>
               <ion-label position="floating">state</ion-label>
-              <ion-input type="text" [(ngModel)]="adminform.state" name="state" #state="ngModel" required></ion-input>
+              <ion-input type="text" ngModel name="state" #state="ngModel" required></ion-input>
               <div class="alert alert-danger" *ngIf="state.touched && state.invalid">
                 state is required
               </div>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Pin No.</ion-label>
-              <ion-input type="text" [(ngModel)]="adminform.pin" name="pin" #pin="ngModel" required></ion-input>
+              <ion-input type="text" ngModel name="pin" #pin="ngModel" required></ion-input>
               <div class="alert alert-danger" *ngIf="pin.touched && pin.invalid">
                 pin is required
               </div>
@@ -76,7 +76,7 @@
         </ion-item>
         <ion-item>
          <ion-label position="floating">RWA Registration Number</ion-label>
-         <ion-input type="number" [(ngModel)]="adminform.rnumber" name="rnumber" #rnumber="ngModel" required></ion-input>
+         <ion-input type="number" ngModel name="rnumber" #rnumber="ngModel" required></ion-input>
          <div class="alert alert-danger" *ngIf="rnumber.touched && rnumber.invalid">
           price is required
          </div>
@@ -85,7 +85,7 @@
   
         <ion-item>
           <ion-label position="floating">Registered On</ion-label>
-          <ion-datetime type="date" [(ngModel)]="adminform.ron" name="ron" #ron="ngModel"></ion-datetime>
+          <ion-datetime type="date" ngModel name="ron" #ron="ngModel"></ion-datetime>
           <div class="alert alert-danger" *ngIf="ron.touched && ron.invalid">
            date is required
           </div>
@@ -94,7 +94,7 @@
   
          <ion-item>
           <ion-label position="floating">General Secretary Name</ion-label>
-          <ion-input type="sname" [(ngModel)]="adminform.sname" name="sname" #sname="ngModel" required></ion-input>
+          <ion-input type="sname" ngModel name="sname" #sname="ngModel" required></ion-input>
           <div class="alert alert-danger" *ngIf="sname.touched && sname.invalid">
            name is required
           </div>
@@ -103,7 +103,7 @@
   
          <ion-item>
           <ion-label position="floating">Mobile number</ion-label>
-          <ion-input type="sno" [(ngModel)]="adminform.sno" name="sno" #sno="ngModel" required></ion-input>
+          <ion-input type="sno" ngModel name="sno" #sno="ngModel" required></ion-input>
           <div class="alert alert-danger" *ngIf="sno.touched && sno.invalid">
            number is required
           </div>
@@ -112,7 +112,7 @@
   
          <ion-item>
           <ion-label position="floating">President Name</ion-label>
-          <ion-input type="pname" [(ngModel)]="adminform.pname" name="pname" #pname="ngModel" required></ion-input>
+          <ion-input type="pname" ngModel name="pname" #pname="ngModel" required></ion-input>
           <div class="alert alert-danger" *ngIf="pname.touched && pname.invalid">
            name is required
           </div>
@@ -121,7 +121,7 @@
   
          <ion-item>
           <ion-label position="floating">Mobile Number</ion-label>
-          <ion-input type="pno" [(ngModel)]="adminform.pno" name="pno" #pno="ngModel" required></ion-input>
+          <ion-input type="pno" ngModel name="pno" #pno="ngModel" required></ion-input>
           <div class="alert alert-danger" *ngIf="pno.touched && pno.invalid">
            number is required
           </div>
@@ -129,7 +129,7 @@
   
          <ion-item>
           <ion-label position="floating">Email Id</ion-label>
-          <ion-input type="email" [(ngModel)]="adminform.email" name="email" #email="ngModel" required></ion-input>
+          <ion-input type="email" ngModel name="email" #email="ngModel" required></ion-input>
           <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
            email is required
           </div>

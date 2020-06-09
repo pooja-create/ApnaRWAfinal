@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './admin/auth.service';
 import { UserService } from './admin/user.service';
-import { AppUser } from './modal';
+import { AppUser, AppUsersuper } from './modal';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +17,9 @@ import { AppUser } from './modal';
 })
 export class AppComponent {
   appUser: AppUser;
+  appUsersuper: AppUsersuper;
   x: boolean;
+  y: boolean;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -29,6 +31,7 @@ export class AppComponent {
     
   ) {
     auth.appUser$.subscribe(appUser => this.x = appUser.isAdmin);
+    auth.appUsersuper$.subscribe(appUsersuper => this.y = appUsersuper.isSuperAdmin);
     auth.user$.subscribe(user=>{
       if(user) {
         userservice.save(user);

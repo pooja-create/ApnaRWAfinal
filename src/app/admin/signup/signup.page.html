@@ -33,6 +33,12 @@
         </ion-item>
 
         <ion-item>
+          <ion-label position="floating">Image</ion-label>
+          <img [src]="photo">
+          <ion-input type="text" value="{{p}}" (click)="getPicture(p)" ngModel="{{p}}" name="img" [readonly]="isReadonly"></ion-input>
+        </ion-item>
+
+        <ion-item>
           <ion-label>Society No</ion-label>
           <select type="text" ngModel name="societyno">
             <option *ngFor="let c of societynumber$ | async" value="{{ c.societyno }}">{{ c.societyno }}</option>

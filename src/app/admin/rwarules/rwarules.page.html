@@ -9,6 +9,18 @@
 
 <ion-content>
   <ion-card>
-  
+    <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
+    <ion-item *ngFor="let t of test | async">
+        <ion-label>Welcome</ion-label>
+        <ion-input type="text" value="{{ t.societyno }}" ngModel="{{ t.societyno }}" name="societyno" [readonly]="isReadonly"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Upload RwaRules Image</ion-label>
+      <img [src]="photo">
+      <ion-input type="text"  (click)="getPicture(p)" ngModel="{{p}}" name="rwarules"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="full" margin-top>Submit</ion-button>
+    </form>
   </ion-card>
 </ion-content>

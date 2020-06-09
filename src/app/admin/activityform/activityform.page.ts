@@ -14,16 +14,17 @@ import { AlertController } from '@ionic/angular';
 import { CameraOptions} from '@ionic-native/camera/ngx';
 const { Camera } = Plugins;
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
-
 import { Plugins, CameraResultType, CameraSource, Capacitor } from '@capacitor/core';
+import { Activityd, Act } from 'src/app/modal';
+
 @Component({
   selector: 'app-activityform',
   templateUrl: './activityform.page.html',
   styleUrls: ['./activityform.page.scss'],
 })
 export class ActivityformPage implements OnInit {
-  activity = {};
+  activity : Activityd[];
+  activitys: Activityd;
   id;
   user$: Observable<firebase.User>;
   test;
@@ -31,8 +32,12 @@ export class ActivityformPage implements OnInit {
   mysaveimage: Observable<any>;
   guestPicture;
   photo: SafeResourceUrl;
+  imageUrl;
   isDesktop: boolean;
   filePickerRef: ElementRef<HTMLInputElement>;
+  public myPhotoURL: any;
+  public myPhotosRef: any;
+  p:string;
   constructor(
 
       private activityService: ActivityService,
@@ -54,8 +59,12 @@ export class ActivityformPage implements OnInit {
    
     this.mysaveimage=_angularFireStore.collection('users')
     .doc(this._angularFireAuth.auth.currentUser.uid).valueChanges();
-  }
 
+    this.id = this.route.snapshot.paramMap.get('id');
+    if(this.id){
+      this.activityService.geta(this.id).valueChanges().subscribe(pp=>this.activitys =pp);
+    }
+  }
   ngOnInit() {
   }
 
@@ -69,6 +78,7 @@ export class ActivityformPage implements OnInit {
     });
 
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    this.imageUrl = image.webPath;
   }
   
    
@@ -88,12 +98,31 @@ export class ActivityformPage implements OnInit {
     });
 
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    this.p= image.dataUrl
   }
 
   onsubmit(activity){
-   
-    this.activityService.addactivity(activity);
-    this.router.navigate(['activityform']);
+    if(this.id){
+      this.activityService.updateact(this.id,activity);
+      }
+      else{
+        this.activityService.addactivity(activity);
+      }
+      this.router.navigate(['activityform']);
   }
-
+  
+  isReadonly() 
+  {
+    return true;
+  }
+  
+  deleteactivity(){
+    if(confirm('Are you sure you want to delete this product')){
+      this.activityService.delete(this.id);
+      console.log(this.id)
+    } else{
+      return;
+    }
+    this.router.navigate(['activitydashboard']);
+  }
 }

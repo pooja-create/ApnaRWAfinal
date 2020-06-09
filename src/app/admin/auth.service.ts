@@ -5,7 +5,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import {User} from '@firebase/auth-types';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { userProfile, AppUser, AppUser1 } from '../modal';
+import { userProfile, AppUser, AppUser1, AppUsersuper } from '../modal';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { UserService } from './user.service';
@@ -15,11 +15,13 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class AuthService {
+  [x: string]: any;
   email: any;
   password: any;
   user$: Observable<firebase.User>;
   
   constructor(
+
     public route: ActivatedRoute,
     public router: Router,
     public afAuth: AngularFireAuth,
@@ -27,6 +29,7 @@ export class AuthService {
     public afDatabase: AngularFireDatabase,
     public db: AngularFireDatabase,
     private userService: UserService
+    
   ) { 
 
     this.user$ = afAuth.authState;
@@ -63,6 +66,13 @@ get appUser$(): Observable<AppUser>{
   return this.user$
     .pipe(switchMap(user => {
      if (user) { return this.userService.get(user.uid).valueChanges(); }
+     
+    }));
+}
+get appUsersuper$(): Observable<AppUsersuper>{
+  return this.user$
+    .pipe(switchMap(user => {
+     if (user) { return this.userService.get2(user.uid).valueChanges(); }
      
     }));
 }

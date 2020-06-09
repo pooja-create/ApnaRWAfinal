@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-content>
+    <ion-card-content *ngIf="this.id; else notid">
       <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
         <ion-item *ngFor="let t of test | async">
           <ion-label>Welcome</ion-label>
@@ -17,60 +17,111 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">President Name</ion-label>
-          <ion-input type="text" [(ngModel)]="member.pname" name="pname"  #pname="ngModel" required></ion-input>
+          <ion-input type="text" value="{{ members?.pname }}" ngModel name="pname"   #pname="ngModel" required></ion-input>
         <div class="alert alert-danger" *ngIf="pname.touched && pname.invalid">
           name is required
         </div>
         </ion-item>
+      
         <ion-item>
           <ion-label position="floating">President Image</ion-label>
-          <ion-input type="text" [(ngModel)]="member.pimage" name="pimage"  #pimage="ngModel" required></ion-input>
-        <div class="alert alert-danger" *ngIf="pimage.touched && pimage.invalid">
-            Image is required
-        </div>  
+          <img [src]="photop">
+          <ion-input type="text" value="{{ members?.pimage }}" (click)="getPPicture(p)" ngModel="{{p}}" name="pimage"></ion-input>
         </ion-item>
+
         <ion-item>
          <ion-label position="floating">President Number</ion-label>
-         <ion-input type="number" [(ngModel)]="member.pnumber" name="pnumber" #pnumber="ngModel" required [min]="0"></ion-input>
+         <ion-input type="number" value="{{ members?.pnumber }}" ngModel name="pnumber" #pnumber="ngModel" required [min]="0"></ion-input>
          <div class="alert alert-danger" *ngIf="pnumber.touched && pnumber.invalid">
           number is required
          </div>
-         
          <p *ngIf="pnumber.errors?.min">this is not valid price</p>
-         
         </ion-item>
         
         <ion-item>
            <ion-label position="floating">General Secretary Name</ion-label>
-
-           <ion-textarea type="text" [(ngModel)]="member.sname" name="sname"  #sname="ngModel" required></ion-textarea>
+           <ion-textarea type="text" value="{{ members?.sname }}" ngModel name="sname"  #sname="ngModel" required></ion-textarea>
            <div class="alert alert-danger" *ngIf="sname.touched && sname.invalid">
             name is required
           </div>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">General Secretary Image</ion-label>
-
-          <ion-textarea type="text" [(ngModel)]="member.simage" name="simage"  #simage="ngModel" required></ion-textarea>
-          <div class="alert alert-danger" *ngIf="simage.touched && simage.invalid">
-           image is required
-         </div>
+          <ion-label position="floating">Secretary Image</ion-label>
+          <img [src]="photos">
+          <ion-input type="text" (click)="getSPicture(s)" value="{{ members?.simage }}" ngModel="{{s}}" name="simage"></ion-input>
         </ion-item>
+
         
         <ion-item>
           <ion-label position="floating">General Secretary Number</ion-label>
-
-          <ion-textarea type="number" [(ngModel)]="member.snumber" name="snumber"  #snumber="ngModel" required></ion-textarea>
+          <ion-textarea type="number" ngModel name="snumber"  value="{{ members?.snumber }}" #snumber="ngModel" required></ion-textarea>
           <div class="alert alert-danger" *ngIf="snumber.touched && snumber.invalid">
            number is required
          </div>
         </ion-item>
-         
-       
-         <ion-button type="submit" expand="full" margin-top>Submit</ion-button>
-         <ion-button color="danger" expand="full" margin-top (click)="deletemember()">Delete</ion-button>
+        <ion-button color="danger" expand="full" margin-top (click)=deletemember()>Delete</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
+  <ng-template #notid>
+  <ion-card>
+  <ion-card-content>
+    <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
+      <ion-item *ngFor="let t of test | async">
+        <ion-label>Welcome</ion-label>
+        <ion-input type="text" value="{{ t.societyno }}" ngModel="{{ t.societyno }}" name="societyno" [readonly]="isReadonly"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">President Name</ion-label>
+        <ion-input type="text"  ngModel name="pname"   #pname="ngModel" required></ion-input>
+      <div class="alert alert-danger" *ngIf="pname.touched && pname.invalid">
+        name is required
+      </div>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">President Image</ion-label>
+        <img [src]="photop">
+        <ion-input type="text"  (click)="getPPicture(p)"   ngModel="{{p}}" name="pimage"></ion-input>
+      </ion-item>
+
+      <ion-item>
+       <ion-label position="floating">President Number</ion-label>
+       <ion-input type="number"  ngModel name="pnumber" #pnumber="ngModel" required [min]="0"></ion-input>
+       <div class="alert alert-danger" *ngIf="pnumber.touched && pnumber.invalid">
+        number is required
+       </div>
+       <p *ngIf="pnumber.errors?.min">this is not valid price</p>
+      </ion-item>
+      
+      <ion-item>
+         <ion-label position="floating">General Secretary Name</ion-label>
+         <ion-textarea type="text" ngModel name="sname"  #sname="ngModel" required></ion-textarea>
+         <div class="alert alert-danger" *ngIf="sname.touched && sname.invalid">
+          name is required
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Secretary Image</ion-label>
+        <img [src]="photos">
+        <ion-input type="text" (click)="getSPicture(s)"  ngModel="{{s}}" name="simage"></ion-input>
+      </ion-item>
+
+      
+      <ion-item>
+        <ion-label position="floating">General Secretary Number</ion-label>
+        <ion-textarea type="number" ngModel name="snumber"  #snumber="ngModel" required></ion-textarea>
+        <div class="alert alert-danger" *ngIf="snumber.touched && snumber.invalid">
+         number is required
+       </div>
+      </ion-item>
+       
+       <ion-button type="submit" expand="full" margin-top>Submit</ion-button>
+       
+    </form>
+  </ion-card-content>
+</ion-card>
+</ng-template>
 </ion-content>

@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-content>
+  <ion-card *ngIf="this.id; else notid">
+    <ion-card-content> 
       <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
         <ion-item *ngFor="let t of test | async">
           <ion-label>Welcome</ion-label>
@@ -18,7 +18,7 @@
         
         <ion-item>
           <ion-label position="floating">Activity Title</ion-label>
-          <ion-input type="text" [(ngModel)]="activity.atitle" name="atitle"  #atitle="ngModel" required></ion-input>
+          <ion-input type="text" value="{{ activitys?.atitle }}" ngModel name="atitle"  #atitle="ngModel" required></ion-input>
         <div class="alert alert-danger" *ngIf="atitle.touched && atitle.invalid">
           title is required
         </div>
@@ -26,38 +26,80 @@
         
         
         <ion-item>
-          
-          <ion-label position="floating">Activity Image Url</ion-label>
-          <ion-avatar class="profile-pic">
-          <img [src]="photo" (click)="getPicture()" [(ngModel)]="photo" name="aimage">
-          <ion-icon name="camera" class="ion-float-right"></ion-icon>
-          </ion-avatar>  
+          <ion-label position="floating">Activity Image</ion-label>
+          <ion-input type="text" value="{{activitys?.aimage}}" (click)="getPicture(p)" ngModel="{{p}}" name="aimage"></ion-input>
         </ion-item>
-
-
-
+       
         <ion-item>
          <ion-label position="floating">Activity Detail</ion-label>
-         <ion-input type="text" [(ngModel)]="activity.adetail" name="adetail" #adetail="ngModel" required [min]="0"></ion-input>
+         <ion-input type="text" ngModel  value="{{ activitys?.adetail }}" name="adetail" #adetail="ngModel" required [min]="0"></ion-input>
          <div class="alert alert-danger" *ngIf="adetail.touched && adetail.invalid">
           price is required
          </div>
-         
          <p *ngIf="adetail.errors?.min">this is not valid price</p>
          
         </ion-item>
         
         <ion-item>
            <ion-label position="floating">Activity Date</ion-label>
-           <ion-datetime displayFormat="MMM DD, YYYY" type="number" [(ngModel)]="activity.adate"  name="adate"  #adate="ngModel"  required></ion-datetime>
+           <ion-datetime displayFormat="MMM DD, YYYY" type="number" value="{{ activitys?.adate }}" ngModel  name="adate"  #adate="ngModel"  required></ion-datetime>
+           <div class="alert alert-danger" *ngIf="adate.touched && adate.invalid">
+            date is required
+          </div>
+        </ion-item>
+        
+         
+         <ion-button color="danger" expand="full" margin-top (click)="deleteactivity()">Delete</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #notid>
+  <ion-card>
+    <ion-card-content>
+      <form #form="ngForm" (ngSubmit)="onsubmit(form.value); form.reset()">
+        <ion-item *ngFor="let t of test">
+          <ion-label>Welcome</ion-label>
+          <ion-input type="text" value="{{ t.societyno }}" ngModel="{{ t.societyno }}" name="societyno" [readonly]="isReadonly"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Activity Title</ion-label>
+          <ion-input type="text" ngModel name="atitle"  #atitle="ngModel" required></ion-input>
+        <div class="alert alert-danger" *ngIf="atitle.touched && atitle.invalid">
+          title is required
+        </div>
+        </ion-item>
+        
+        
+        <ion-item>
+          <ion-label position="floating">Activity Image</ion-label>
+          <img [src]="photo">
+          <ion-input type="text" value="{{p}}" (click)="getPicture(p)" ngModel="{{p}}" name="aimage"></ion-input>
+        </ion-item>
+       
+        <ion-item>
+         <ion-label position="floating">Activity Detail</ion-label>
+         <ion-input type="text" ngModel name="adetail" #adetail="ngModel" required [min]="0"></ion-input>
+         <div class="alert alert-danger" *ngIf="adetail.touched && adetail.invalid">
+          price is required
+         </div>
+         <p *ngIf="adetail.errors?.min">this is not valid price</p>
+         
+        </ion-item>
+        
+        <ion-item>
+           <ion-label position="floating">Activity Date</ion-label>
+           <ion-datetime displayFormat="MMM DD, YYYY" type="number" ngModel  name="adate"  #adate="ngModel"  required></ion-datetime>
            <div class="alert alert-danger" *ngIf="adate.touched && adate.invalid">
             date is required
           </div>
         </ion-item>
         
          <ion-button type="submit" expand="full" margin-top>Submit</ion-button>
-         <ion-button color="danger" expand="full" margin-top (click)="deleteactivity()">Delete</ion-button>
+         
       </form>
     </ion-card-content>
   </ion-card>
+</ng-template>
 </ion-content>

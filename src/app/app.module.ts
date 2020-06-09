@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
 import {Camera} from '@ionic-native/camera/ngx';
+import { WebIntent } from '@ionic-native/web-intent/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import {Camera} from '@ionic-native/camera/ngx';
     StatusBar,
     SplashScreen,
     Camera,
+    WebIntent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

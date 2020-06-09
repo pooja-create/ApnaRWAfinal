@@ -11,7 +11,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-card>
-  <ion-card-content *ngIf="p$ | async; let all">
+  <ion-card-content  *ngIf="p$ | async; let all">
    <div *ngFor="let cc of all.usersignupdetails">
     <div *ngIf="p$ | async; let all">
     <div *ngFor="let c of all.serviceform">

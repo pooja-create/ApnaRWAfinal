@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-panel"></ion-back-button>
+   </ion-buttons>
+    <ion-title>
+      <div *ngFor="let f of fname | async">
+        <ion-list>
+        
+        <ion-avatar class="item-avatar"><img src="{{ f.img }}"></ion-avatar>
+    
+        {{ f.fname }}&nbsp;&nbsp;{{ f.lname }}
+       
+        </ion-list>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="tabs-md">
+  <div class="chat" *ngFor="let chat of chatRef | async">
+   <div class="me" *ngIf="id== chat.UserId">
+    
+    {{ chat.Message }}
+    <span><small>{{chat.Timestamp.toDate() | date:'h:mm a'}}</small></span>
+   </div>
+   <div class="you" *ngIf="id !=chat.UserId">
+   <span class="name">
+   
+   </span><br>
+   
+    {{ chat.Message }}
+    <span><small>{{chat.Timestamp.toDate() | date:'h:mm a'}}</small></span>
+  </div>
+  </div>
+</div>
+</ion-content>
+
+<ion-footer>
+<ion-item>
+<ion-input [(ngModel)]="text"  placeholder="Type..."></ion-input>
+<ion-button (click)="send()" fill="clear" icon-only slot="end">
+  <ion-icon name="send-sharp"></ion-icon>
+</ion-button>
+</ion-item>     
+
+</ion-footer>

@@ -6,49 +6,54 @@
         <ion-title>Navigate</ion-title>  
       </ion-toolbar>  
     </ion-header>  
-    <ion-content>  
+    <ion-content>
+    
       <ion-list>  
         <ion-menu-toggle auto-hide="true">  
-          <ion-item [routerLink]="['tabs/tab1']">
-            <ion-icon color="tertiary" name="home" slot="start"></ion-icon>  
+          <ion-item  [routerLink]="['tabs/tab1']">
+            <ion-icon class="tabs-md"  name="home" slot="start"></ion-icon>  
               home
           </ion-item>
+
+          <ng-container *ngIf="y">
           <ion-item [routerLink]="['superadminform']"> 
-            <ion-icon color="tertiary" name="person-outline" slot="start"></ion-icon>  
+            <ion-icon class="tabs-md"  name="person-outline" slot="start"></ion-icon>  
               Superadmin
           </ion-item>
-
+          </ng-container>
+          
           <ion-item [routerLink]="['showofficebearers']"> 
-            <ion-icon color="tertiary" name="people-outline" slot="start"></ion-icon>  
+            <ion-icon  class="tabs-md" name="people-outline" slot="start"></ion-icon>  
               Office Bearers
           </ion-item>
 
-          <ion-item [routerLink]="['showrules']"> 
-            <ion-icon color="tertiary" name="copy-outline" slot="start"></ion-icon>  
+          <ion-item  [routerLink]="['showrules']"> 
+            <ion-icon  class="tabs-md" name="copy-outline" slot="start"></ion-icon>  
               Rules And Regulations
           </ion-item> 
 
           <ng-container *ngIf="x">
           <ion-item [routerLink]="['admin-panel']"> 
-            <ion-icon color="tertiary" name="save" slot="start"></ion-icon>  
+            <ion-icon class="tabs-md" name="save" slot="start"></ion-icon>  
               Admin Panel
           </ion-item>
         </ng-container>
           
           <ion-item *ngIf="!islogedin(); else elseBlock" [routerLink]="['login']"> 
-            <ion-icon color="tertiary" name="save" slot="start"></ion-icon>  
+            <ion-icon class="tabs-md" name="save" slot="start"></ion-icon>  
             LogIn
           </ion-item> 
 
           <ng-template #elseBlock>
-          <ion-item (click)="logout()"> 
-            <ion-icon color="tertiary" name="save" slot="start"></ion-icon>  
+          <ion-item  (click)="logout()"> 
+            <ion-icon class="tabs-md" name="save" slot="start"></ion-icon>  
             Logout
           </ion-item> 
 
           </ng-template> 
         </ion-menu-toggle>  
-      </ion-list>  
+      </ion-list> 
+ 
     </ion-content>  
   </ion-menu> 
   <ion-router-outlet Id="content"></ion-router-outlet>  

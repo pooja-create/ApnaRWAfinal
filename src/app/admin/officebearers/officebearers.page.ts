@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { OfficebearersService } from '../Officebearers.service';
+import { Officebearers } from 'src/app/modal';
 
 @Component({
   selector: 'app-officebearers',
@@ -16,7 +17,7 @@ import { OfficebearersService } from '../Officebearers.service';
   styleUrls: ['./officebearers.page.scss'],
 })
 export class OfficebearersPage implements OnInit {
-  office = {};
+  office : Officebearers;
   id;
   user$: Observable<firebase.User>;
   test;
@@ -42,5 +43,8 @@ export class OfficebearersPage implements OnInit {
     this.officebearersService.addoffice(office);
     this.router.navigate(['admin-panel']);
   }
-
+  isReadonly() 
+  {
+    return true;
+  }
 }

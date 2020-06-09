@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "apnarwareal",
+  "appId": "com.ApnaRWA",
+  "appName": "ApnaRWA",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

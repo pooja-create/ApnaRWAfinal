@@ -8,5 +8,21 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-content *ngIf="p$ | async; let all">
+     <div *ngFor="let cc of all.usersignupdetails">
+      <div *ngIf="p$ | async; let all">
+      <div *ngFor="let c of all.rulesform">
+        <ion-slides [options]="slideopts" zoom>
+        <ion-slide> 
+        <div class="swipper zoom container" *ngIf="cc.societyno==c.societyno">
+          <img src="{{ c.rwarules }}">
+        </div>
+        </ion-slide> 
+        </ion-slides>
+      </div>
+    </div> 
+    </div>
+  </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -8,5 +8,20 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-item>
+     <small>{{ activitydetail?.adate | date:'MMM,dd,yyyy hh:mm a' }}</small>
+    </ion-item>
+    <ion-item>
+      <img src="{{ activitydetail?.aimage }}">
+    </ion-item>
+    <ion-item>
+      {{ activitydetail?.atitle }}
+    </ion-item>
+    <ion-item>
+      {{ activitydetail?.adetail }}
+    </ion-item>
+    <ion-item>
+    </ion-item>
+  </ion-card>
 </ion-content>

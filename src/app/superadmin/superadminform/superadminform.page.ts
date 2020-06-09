@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SuperadminService } from '../superadmin.service';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Superadmin } from 'src/app/modal';
 
 @Component({
   selector: 'app-superadminform',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./superadminform.page.scss'],
 })
 export class SuperadminformPage implements OnInit {
-  adminform = {};
+  adminform : Superadmin;
   constructor(
               private superadmin: SuperadminService,
               private router: Router,

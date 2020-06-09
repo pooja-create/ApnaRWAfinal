@@ -8,5 +8,21 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-content  *ngIf="p$ | async; let all">
+     <div *ngFor="let cc of all.usersignupdetails">
+      <div *ngIf="p$ | async; let all">
+      <div *ngFor="let c of all.serviceform">
+        <div *ngIf="cc.societyno==c.societyno">
+          <ion-item>
+            <small>{{ c.name }}</small>&nbsp;
+            <small>{{ c.category  }}</small>&nbsp;&nbsp;
+            <ion-button [routerLink]="['/servicedashboard',c.id]">Edit</ion-button>
+          </ion-item>
+        </div> 
+      </div>
+    </div> 
+    </div>
+  </ion-card-content>
+  </ion-card>
 </ion-content>
